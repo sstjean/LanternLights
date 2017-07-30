@@ -12,24 +12,29 @@ StripBrightnessManager::StripBrightnessManager(StripManager *stripManager, Ambie
 void StripBrightnessManager::Init()
 {
 	_currentBrightness = 0;
-  EnableLightSensor();
+  //EnableLightSensor();
+  DisableLightSensor();
 	_stripManager->SetBrightness(_currentBrightness);
 }
 
 void StripBrightnessManager::EnableLightSensor(){
   _useLightSensor = true;
-  //Serial.println("Using light sensor: ");
+  Serial.println("Using light sensor: ");
   return;
 }
 
 void StripBrightnessManager::DisableLightSensor(){
   _useLightSensor = false;
-  //Serial.println("Not using light sensor: ");
+  Serial.println("Not using light sensor: ");
+	_currentBrightness = 164;
+	Serial.println("Setting brightness to: " + _currentBrightness);
   return;
 }
 
 int StripBrightnessManager::GetBrightness()
 {
+	Serial.print("Current bightnessStripBrightnessManager::GetBrightness - ");
+	Serial.println(_currentBrightness);
   return _currentBrightness;
 }
 

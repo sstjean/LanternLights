@@ -34,18 +34,10 @@ void TwoStripManager::Init()
 {
 	_strip1.begin();
 	_strip2.begin();
-  SetBrightness(0);
+    SetBrightness(164);
 }
 
-void TwoStripManager::TurnOff()
-{
-  SetBrightness(0);
-}
 
-void TwoStripManager::TurnOn()
-{
-  SetBrightness(164);
-}
 
 void TwoStripManager::SetBrightness(uint8_t brightness)
 {
