@@ -11,48 +11,20 @@ StripBrightnessManager::StripBrightnessManager(StripManager *stripManager, Ambie
 
 void StripBrightnessManager::Init()
 {
-	_currentBrightness = 0;
-  //EnableLightSensor();
-  DisableLightSensor();
+	_currentBrightness = LEDS_MAX_BRIGHTNESS;
 	_stripManager->SetBrightness(_currentBrightness);
 }
 
-void StripBrightnessManager::EnableLightSensor(){
-  _useLightSensor = true;
-  Serial.println("Using light sensor: ");
-  return;
-}
-
-void StripBrightnessManager::DisableLightSensor(){
-  _useLightSensor = false;
-  Serial.println("Not using light sensor: ");
-	_currentBrightness = 164;
-	Serial.println("Setting brightness to: " + _currentBrightness);
-  return;
-}
-
-int StripBrightnessManager::GetBrightness()
-{
-	Serial.print("Current bightnessStripBrightnessManager::GetBrightness - ");
-	Serial.println(_currentBrightness);
-  return _currentBrightness;
-}
-
 bool StripBrightnessManager::Update()
-{  
-  AmbientLightState ambientLightState;
-  
-	if (_useLightSensor){
-  
-		_ambientLight->Update();
+{
+	_currentBrightness = LEDS_MAX_BRIGHTNESS;
+	_stripManager->SetBrightness(_currentBrightness);
+	
+	/*
+	_ambientLight->Update();
 
-	  ambientLightState = _ambientLight->GetState();
-    
-	} else {
-    //SSJ - Force to full brightness.  Do not fade in.
-    ambientLightState = Dark;
-	}
- 
+	AmbientLightState ambientLightState = Dark;  //_ambientLight->GetState();
+
 	switch (ambientLightState)
 	{
 	case Light:
@@ -90,7 +62,7 @@ bool StripBrightnessManager::Update()
 	default:
 		break;
 	}
-
+*/
 	return true; // Return TRUE to indicate that the strip is active.
 }
 

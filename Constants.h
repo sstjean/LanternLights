@@ -18,7 +18,7 @@
 #define PIN_STRIP_2			11
 
 // The photo resistor pin
-#define PIN_PHOTO_RESISTOR	A5
+#define PIN_PHOTO_RESISTOR	A0
 
 
 
@@ -27,13 +27,13 @@
 //-----------------------------------------------------
 
 // The number of LED modules (of 9 LEDs each) on strip 1
-#define STRIP_1_MODULE_COUNT	1
+#define STRIP_1_MODULE_COUNT	5
 
 // The number of LED modules (of 9 LEDs each) on strip 2
-#define STRIP_2_MODULE_COUNT	0
+#define STRIP_2_MODULE_COUNT	6
 
 // This is the maximum allowed brightness
-#define LEDS_MAX_BRIGHTNESS		164 //128
+#define LEDS_MAX_BRIGHTNESS		164
 
 
 
@@ -60,13 +60,13 @@
 #define MODULE_COUNT			STRIP_1_MODULE_COUNT + STRIP_2_MODULE_COUNT
 
 // The number of individual LEDs on strip 1
-#define LEDS_STRIP_1			STRIP_1_MODULE_COUNT *9 //<< 2
+#define LEDS_STRIP_1			STRIP_1_MODULE_COUNT * 9
 
 // The number of individual LEDs on strip 2
-#define LEDS_STRIP_2			STRIP_2_MODULE_COUNT * 9 //<< 2
+#define LEDS_STRIP_2			STRIP_2_MODULE_COUNT * 9
 
 // The total number of individual LEDs
-#define TOTAL_LED_COUNT			(STRIP_1_MODULE_COUNT + STRIP_2_MODULE_COUNT) * 9 //<< 2
+#define TOTAL_LED_COUNT			(STRIP_1_MODULE_COUNT + STRIP_2_MODULE_COUNT) * 9
 
 
 

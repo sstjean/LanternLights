@@ -8,12 +8,6 @@
 // (2)(1)        (1)(2)          (2)(3)			 
 //
 // Where (0) is the first LED of the module and (3) is the last.
-//
-// 9-LED MODULE               VIRTUAL MODULE
-//  (0)(1)(2)					(0)(1)(2)
-//  (3)(4)(5)					(3)(4)(5)
-//  (6)(7)(8)					(6)(7)(8)
-//
 
 
 
@@ -34,10 +28,8 @@ void TwoStripManager::Init()
 {
 	_strip1.begin();
 	_strip2.begin();
-    SetBrightness(164);
+	SetBrightness(164);
 }
-
-
 
 void TwoStripManager::SetBrightness(uint8_t brightness)
 {
@@ -55,7 +47,7 @@ void TwoStripManager::SetBrightness(uint8_t brightness)
 void TwoStripManager::Show()
 {
 	_strip1.show();
-	_strip2.show(); 
+	_strip2.show();
 }
 
 // Returns (strip) 1 or (strip) 2 giving the virtual LED index.
@@ -74,32 +66,31 @@ uint8_t TwoStripManager::GetStripNumber(int virtualLedIndex)
 // Returns the "physical" LED index on its strip given the virtual LED index.
 uint8_t TwoStripManager::GetLedIndex(int virtualLedIndex)
 {
-	// Get the "module sub index" of the LED, i.e. which of the 9 LEDs the given LED is sitting on within its module (a value 0-8):
+	// Get the "module sub index" of the LED, i.e. which of the 9 LEDs the given LED is sitting on within its module (a value 0-3):
 	uint8_t moduleSubIndex = virtualLedIndex % 9;
- 
+
 	if (virtualLedIndex < LEDS_STRIP_1)
 	{
 		// The LED is on strip 1.
-		// Identify the 9-module of the physical LED and the index of the first LED of that module:
+		
+		// Identify the 4-module of the physical LED and the index of the first LED of that module:
 		uint8_t firstLedIndex = (STRIP_1_MODULE_COUNT - 1 - (virtualLedIndex / 9)) * 9;
-
-		// The physical order of the LEDs within a module should be converted to a virtual module:
 		return firstLedIndex + moduleSubIndex;
 	}
 	else
 	{
 		// The LED is on strip 2.
-    
+
 		// Make the virtual LED index start on 0:
 		virtualLedIndex -= LEDS_STRIP_1;
 
-		// Identify the 9-module of the physical LED and the index of the first LED of that module:
+		// Identify the 4-module of the physical LED and the index of the first LED of that module:
 		uint8_t firstLedIndex = (virtualLedIndex / 9) * 9;
 
 		// The physical order of the LEDs within a module should be converted to a virtual module:
 		return firstLedIndex + moduleSubIndex;
-	}
 
+	}
 	return 0; // This line can't be reached, but the compiler can't see that...  ;-)
 }
 

@@ -1,5 +1,6 @@
 #include "FireEffect.h"
 #include "Support.h"
+#include "Constants.h"
 
 void FireEffect::Update()
 {
@@ -15,7 +16,7 @@ uint32_t FireEffect::GetColor(int virtualLedIndex)
 
 	float level1Value = _fireLevels[levelIndex].GetNormalizedValue();
 
-	uint8_t r = ScaleValue(level1Value, 64, 164); // 64-164 is based on a max brightness of 164 (i.e. actual max = 32-64)
+	uint8_t r = ScaleValue(level1Value, 64, LEDS_MAX_BRIGHTNESS); // 64-128 is based on a max brightness of 128 (i.e. actual max = 32-64)
 	uint8_t g = r * 0.45; //0.55;
 	uint8_t b = g * 0.2;
 

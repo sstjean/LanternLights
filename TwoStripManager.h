@@ -23,7 +23,7 @@ public:
 	void SetPixelColor(uint16_t virtualLedIndex, uint32_t color);
 	void Clear();
 	void Show();
-  
+
 private:
 	Adafruit_NeoPixel _strip1 = Adafruit_NeoPixel(LEDS_STRIP_1, PIN_STRIP_1, NEO_GRB + NEO_KHZ800);
 	Adafruit_NeoPixel _strip2 = Adafruit_NeoPixel(LEDS_STRIP_2, PIN_STRIP_2, NEO_GRB + NEO_KHZ800);
